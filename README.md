@@ -14,6 +14,6 @@ This project is a part of my OJT(On-the-Job Training).
 [ ] Add Settings  
 
 ## Screenshot
-![Login preview](./.github/screenshots/login.png)
-![home preview](./.github/screenshots/home.png)
-![search preview](./.github/screenshots/search.png)
+<img src="./.github/screenshots/login.png" alt="Login preview" height="400">
+<img src="./.github/screenshots/home.png" alt="Home preview" height="400">
+<img src="./.github/screenshots/search.png" alt="Search preview" height="400">
