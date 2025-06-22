@@ -9,6 +9,7 @@ class Book {
   final String overview;
   final String aboutAuthor;
   final double rating;
+  final double price;
   final List<String> categories;
   final int pageCount;
   final String publisher;
@@ -25,6 +26,7 @@ class Book {
     this.overview = '',
     this.aboutAuthor = '',
     this.rating = 0.0,
+    this.price = 0.0,
     this.categories = const [],
     this.pageCount = 0,
     this.publisher = '',
@@ -44,6 +46,7 @@ class Book {
       overview: json['overview'] ?? '',
       aboutAuthor: json['aboutAuthor'] ?? '',
       rating: json['rating']?.toDouble() ?? 0.0,
+      price: json['price']?.toDouble() ?? 0.0,
       categories: List<String>.from(json['categories'] ?? []),
       pageCount: json['pageCount'] ?? 0,
       publisher: json['publisher'] ?? '',
@@ -64,6 +67,7 @@ class Book {
       'overview': overview,
       'aboutAuthor': aboutAuthor,
       'rating': rating,
+      'price': price,
       'categories': categories,
       'pageCount': pageCount,
       'publisher': publisher,
@@ -83,6 +87,7 @@ class Book {
     String? overview,
     String? aboutAuthor,
     double? rating,
+    double? price,
     List<String>? categories,
     int? pageCount,
     String? publisher,
@@ -99,6 +104,7 @@ class Book {
       overview: overview ?? this.overview,
       aboutAuthor: aboutAuthor ?? this.aboutAuthor,
       rating: rating ?? this.rating,
+      price: price ?? this.price,
       categories: categories ?? this.categories,
       pageCount: pageCount ?? this.pageCount,
       publisher: publisher ?? this.publisher,
