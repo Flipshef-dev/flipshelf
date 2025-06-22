@@ -1,5 +1,6 @@
 import 'package:flipshelf/common/temp_data.dart';
 import 'package:flipshelf/models/book.dart';
+import 'package:flipshelf/models/recommended_book_card.dart';
 import 'package:flipshelf/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,45 +16,6 @@ class _SearchPageState extends State<SearchPage> {
   late TextEditingController _searchController;
   String _searchQuery = '';
   bool _isSearching = false;
-
-  final List<Book> recommended = [
-    Book(
-      id: "1",
-      title: 'One Piece',
-      author: 'Eiichiro Oda',
-      coverColor: Color(0xFFB91C1C),
-      coverImage: 'assets/images/onepiece.png',
-      aboutAuthor:
-          "J.D. Salinger was an American writer, best known for his 1951 novel The Catcher in the Rye. Before its publication, Salinger published several short stories in Story magazine",
-      rating: 3,
-      overview:
-          "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults but is often read by adolescents for its theme of angst, alienation and as a critique......",
-    ),
-    Book(
-      id: "2",
-      title: 'Attack on Titan',
-      author: 'Hajime Isayama',
-      coverColor: Color(0xFF059669),
-      coverImage: 'assets/images/onepiece.png',
-      aboutAuthor:
-          "Hajime Isayama is a Japanese manga artist best known for the manga series Attack on Titan.",
-      rating: 4,
-      overview:
-          "Attack on Titan is a Japanese manga series written and illustrated by Hajime Isayama. Set in a world where humanity lives inside cities surrounded by enormous walls...",
-    ),
-    Book(
-      id: "3",
-      title: 'Naruto',
-      author: 'Masashi Kishimoto',
-      coverColor: Color(0xFFDC2626),
-      coverImage: 'assets/images/onepiece.png',
-      aboutAuthor:
-          "Masashi Kishimoto is a Japanese manga artist known for creating the Naruto series.",
-      rating: 4,
-      overview:
-          "Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja...",
-    ),
-  ];
 
   @override
   void initState() {
@@ -193,12 +155,12 @@ class _SearchPageState extends State<SearchPage> {
                   SizedBox(height: 30),
                   _buildRecentSearch(context),
                   SizedBox(height: 30),
-                  _buildRecommended(context),
-                  SizedBox(height: 30),
                 ],
               ),
             ),
           ),
+          _buildRecommended(context),
+          const SliverToBoxAdapter(child: SizedBox(height: 20)),
         ],
       ),
     );
@@ -206,12 +168,13 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildRecentSearch(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Recent Search",
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.secondary,
           ),
         ),
@@ -244,6 +207,41 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildRecommended(BuildContext context) {
-    return Row();
+    return SliverToBoxAdapter(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              "Recommended",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+          ),
+          SizedBox(height: 12),
+          SizedBox(
+            height: 260,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              itemCount: filteredBooks.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                    right: index < filteredBooks.length - 1 ? 16 : 0,
+                  ),
+                  child: RecommendedBookCard(book: filteredBooks[index]),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

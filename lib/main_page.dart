@@ -1,4 +1,4 @@
-import 'package:flipshelf/pages/bookmarks/bookmark_page.dart';
+import 'package:flipshelf/pages/favorites/favorite_page.dart';
 import 'package:flipshelf/pages/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flipshelf/models/bottom_navbar_items.dart';
@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = [
     HomePage(),
     SearchPage(),
-    BookmarkPage(),
+    FavoritePage(),
     SettingsPage(),
   ];
 
@@ -49,6 +49,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ],
         ),
+        // Nav icons
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: navIcons.asMap().entries.map((entry) {
@@ -59,7 +60,7 @@ class _MainPageState extends State<MainPage> {
               onTap: () => _onNavTap(index),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 350),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: isSelected
@@ -68,7 +69,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 child: Icon(
                   icon,
-                  size: 28,
+                  size: 22,
                   color: isSelected
                       ? Theme.of(context).colorScheme.tertiary
                       : Theme.of(context).colorScheme.onSurface.withAlpha(100),

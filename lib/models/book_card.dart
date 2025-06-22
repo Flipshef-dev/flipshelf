@@ -98,7 +98,7 @@ class _BookCardState extends State<BookCard> {
             ),
             SizedBox(width: 10,),
             Text(
-              "Price here",
+              "\$${widget.book.price}",
               style: TextStyle(
                 fontSize: 14,
                 color: Theme.of(context).colorScheme.secondary.withAlpha(240),
