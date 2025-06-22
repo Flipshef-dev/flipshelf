@@ -12,3 +12,8 @@ This project is a part of my OJT(On-the-Job Training).
 [ ] Add Bookmark page
 
 [ ] Add Settings  
+
+## Screenshot
+![Login preview](./.github/screenshots/login.png)
+![home preview](./.github/screenshots/home.png)
+![search preview](./.github/screenshots/search.png)
