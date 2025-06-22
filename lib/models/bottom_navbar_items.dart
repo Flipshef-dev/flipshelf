@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 int navSelectedIndex = 0;
 
 // Icons for navbar
 List<IconData> navIcons = [
-  FontAwesomeIcons.house,
-  FontAwesomeIcons.magnifyingGlass,
-  FontAwesomeIcons.solidHeart,
-  FontAwesomeIcons.gear,
+  Icons.home,
+  Icons.search_rounded,
+  Icons.bookmark_border,
+  Icons.settings,
 ];
 
 
