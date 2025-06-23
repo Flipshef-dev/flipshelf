@@ -9,7 +9,7 @@ This project is a part of my OJT(On-the-Job Training).
 ### TODO
 [ ] Add Search page
 
-[ ] Add Bookmark page
+[ ] Add Favorite page
 
 [ ] Add Settings  
 
