@@ -1,7 +1,6 @@
 import 'package:flipshelf/models/book.dart';
 import 'package:flipshelf/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class RecommendedBookCard extends StatefulWidget {

@@ -14,6 +14,7 @@ final lightTheme = ThemeData(
     surface: Colors.white,
     onSurface: Colors.black87,
     tertiary: Colors.white,
+    tertiaryContainer: Color.fromARGB(255, 159, 159, 172),
   ),
 );
 
@@ -33,5 +34,6 @@ final darkTheme = ThemeData(
     surface: Color(0xFF2A2A36),
     onSurface: Colors.white,
     tertiary: Colors.white,
+    tertiaryContainer: Color(0xFF2A2D3E),
   ),
 );

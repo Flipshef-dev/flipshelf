@@ -96,7 +96,7 @@ class _BookCardState extends State<BookCard> {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            SizedBox(width: 10,),
+            SizedBox(width: 10),
             Text(
               "\$${widget.book.price}",
               style: TextStyle(
