@@ -184,7 +184,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             decoration: BoxDecoration(
                               color: pageIndex == index
                                   ? TColor.primary
-                                  : TColor.primaryLight.withOpacity(0.5),
+                                  : TColor.primaryLight.withValues(alpha: (0.5 * 255).round().toDouble()),
                               borderRadius: BorderRadius.circular(4),
                             ),
                           );
@@ -199,7 +199,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           // color: pageIndex == pageAttr.length - 1
                           //     ? TColor.primary.withOpacity(0.1)
                           //     : Colors.transparent,
-                          color: TColor.primary.withOpacity(0.1),
+                          color: TColor.primary.withAlpha(1),
                         ),
                         child: TextButton(
                           onPressed: _animateToNextPage,
