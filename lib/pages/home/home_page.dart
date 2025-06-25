@@ -2,7 +2,9 @@ import 'package:flipshelf/models/book.dart';
 import 'package:flipshelf/models/book_card.dart';
 import 'package:flipshelf/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flipshelf/models/sidebar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,8 +48,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       id: 2,
       title: 'Attack on Titan',
       author: 'Hajime Isayama',
-      coverColor: Color(0xFF059669),
-      coverImage: 'assets/images/onepiece.png',
+      coverColor: Color(0xFF0B588E),
+      coverImage: 'assets/images/aot.png',
       aboutAuthor:
           "Hajime Isayama is a Japanese manga artist best known for the manga series Attack on Titan.",
       rating: 4,
@@ -59,12 +61,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       title: 'Naruto',
       author: 'Masashi Kishimoto',
       coverColor: Color(0xFFDC2626),
-      coverImage: 'assets/images/onepiece.png',
+      coverImage: 'assets/images/naruto.png',
       aboutAuthor:
           "Masashi Kishimoto is a Japanese manga artist known for creating the Naruto series.",
       rating: 4,
       overview:
           "Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja...",
+    ),
+    Book(
+      id: 4,
+      title: 'God Of War 3',
+      author: 'Matthew Stover',
+      coverColor: Color(0xFFE4A91D),
+      coverImage: 'assets/images/gow3.png',
+      aboutAuthor:
+          "Matthew Stoveris the New York Times bestselling author of the God Of War franchise",
+      rating: 4.5,
+      overview:
+          "God of War is an action-adventure video game series, the first era of which was loosely based on Greek mythology.",
     ),
   ];
 
@@ -86,12 +100,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       title: 'Demon Slayer',
       author: 'Koyoharu Gotouge',
       coverColor: Color.fromARGB(255, 147, 51, 234),
-      coverImage: 'assets/images/zoro.png',
+      coverImage: 'assets/images/Demon_Slayer.jpg',
       aboutAuthor:
           "Koyoharu Gotouge is a Japanese manga artist known for the series Demon Slayer.",
       rating: 4.5,
       overview:
           "Demon Slayer follows Tanjiro Kamado, a young boy who becomes a demon slayer after his family is slaughtered...",
+    ),
+    Book(
+      id: 6,
+      title: 'God Of War ',
+      author: 'Matthew Stover',
+      coverColor: Color(0xFFE4A91D),
+      coverImage: 'assets/images/gow.png',
+      aboutAuthor:
+          "Matthew Stoveris the New York Times bestselling author of the God Of War franchise",
+      rating: 4.2,
+      overview:
+          "God of War is an action-adventure video game series, the first era of which was loosely based on Greek mythology.",
     ),
   ];
 
@@ -168,7 +194,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _searchController.clear();
     FocusScope.of(context).unfocus();
   }
-  void _toggleDrawer() {}
+
 
   @override
   Widget build(BuildContext context) {
@@ -183,34 +209,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Top bar
-            _buildTopBar(context, themeProvider),
-            // Content
-            _buildContent(context),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTopBar(BuildContext context, ThemeProvider themeProvider) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              _toggleDrawer();
-            },
-            icon: Icon(Icons.menu),
-            iconSize: 28,
-            color: Theme.of(context).colorScheme.secondary,
-          ),
-          Row(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Will be removed in future if not fix (oviously i'm too lazy to fix this rn)
               // _buildThemeToggle(themeProvider, context),
@@ -225,15 +229,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ],
           ),
-        ],
+        ),
       ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Content
+            _buildContent(context),
+          ],
+        ),
+      ),
+      drawer: Sidebar(),
     );
   }
 
-  Widget buildThemeToggle(
-    ThemeProvider themeProvider,
-    BuildContext context,
-  ) {
+  Widget buildThemeToggle(ThemeProvider themeProvider, BuildContext context) {
     return GestureDetector(
       onTap: () {
         themeProvider.toggleTheme();
@@ -529,5 +539,4 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
     );
   }
-  
 }

@@ -35,8 +35,8 @@ final List<Book> recommended = [
     id: 2,
     title: 'Attack on Titan',
     author: 'Hajime Isayama',
-    coverColor: Color(0xFF059669),
-    coverImage: 'assets/images/onepiece.png',
+    coverColor: Color(0xFF0B588E),
+    coverImage: 'assets/images/aot.png',
     aboutAuthor:
         "Hajime Isayama is a Japanese manga artist best known for the manga series Attack on Titan.",
     rating: 4,
@@ -49,7 +49,7 @@ final List<Book> recommended = [
     title: 'Naruto',
     author: 'Masashi Kishimoto',
     coverColor: Color(0xFFDC2626),
-    coverImage: 'assets/images/onepiece.png',
+    coverImage: 'assets/images/naruto.png',
     aboutAuthor:
         "Masashi Kishimoto is a Japanese manga artist known for creating the Naruto series.",
     rating: 4,
@@ -62,7 +62,7 @@ final List<Book> recommended = [
     title: 'Demon Slayer',
     author: 'Koyoharu Gotouge',
     coverColor: Color.fromARGB(255, 147, 51, 234),
-    coverImage: 'assets/images/zoro.png',
+    coverImage: 'assets/images/Demon_Slayer.jpg',
     aboutAuthor:
         "Koyoharu Gotouge is a Japanese manga artist known for the series Demon Slayer.",
     rating: 4.1,
@@ -80,6 +80,32 @@ final List<Book> recommended = [
     rating: 4.2,
     overview:
         "My Hero Academia follows Izuku Midoriya, a boy born without superpowers in a world where they have become commonplace...",
+  ),
+  Book(
+    id: 6,
+    title: 'God Of War 3',
+    author: 'Matthew Stover',
+    coverColor: Color(0xFFE4A91D),
+    coverImage: 'assets/images/gow3.png',
+    aboutAuthor:
+        "Matthew Stoveris the New York Times bestselling author of the God Of War franchise",
+    rating: 4.2,
+    price: 80,
+    overview:
+        "God of War is an action-adventure video game series, the first era of which was loosely based on Greek mythology.",
+  ),
+  Book(
+    id: 7,
+    title: 'God Of War ',
+    author: 'Matthew Stover',
+    coverColor: Color(0xFFE4A91D),
+    coverImage: 'assets/images/gow.png',
+    aboutAuthor:
+        "Matthew Stoveris the New York Times bestselling author of the God Of War franchise",
+    rating: 4.2,
+    price: 80,
+    overview:
+        "God of War is an action-adventure video game series, the first era of which was loosely based on Greek mythology.",
   ),
 ];
 
