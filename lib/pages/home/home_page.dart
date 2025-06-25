@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildThemeToggle(
+  Widget buildThemeToggle(
     ThemeProvider themeProvider,
     BuildContext context,
   ) {
