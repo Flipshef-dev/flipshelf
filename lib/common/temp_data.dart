@@ -19,7 +19,7 @@ final List<String> recentSearches = [
 
 final List<Book> recommended = [
   Book(
-    id: "1",
+    id: 1,
     title: 'One Piece',
     author: 'Eiichiro Oda',
     coverColor: Color(0xFFB91C1C),
@@ -32,7 +32,7 @@ final List<Book> recommended = [
         "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults but is often read by adolescents for its theme of angst, alienation and as a critique......",
   ),
   Book(
-    id: "2",
+    id: 2,
     title: 'Attack on Titan',
     author: 'Hajime Isayama',
     coverColor: Color(0xFF059669),
@@ -45,7 +45,7 @@ final List<Book> recommended = [
     price: 100.0,
   ),
   Book(
-    id: "3",
+    id: 3,
     title: 'Naruto',
     author: 'Masashi Kishimoto',
     coverColor: Color(0xFFDC2626),
@@ -58,7 +58,7 @@ final List<Book> recommended = [
     price: 100.0,
   ),
   Book(
-    id: "4",
+    id: 4,
     title: 'Demon Slayer',
     author: 'Koyoharu Gotouge',
     coverColor: Color.fromARGB(255, 147, 51, 234),
@@ -70,7 +70,7 @@ final List<Book> recommended = [
         "Demon Slayer follows Tanjiro Kamado, a young boy who becomes a demon slayer after his family is slaughtered...",
   ),
   Book(
-    id: "5",
+    id: 5,
     title: 'My Hero Academia',
     author: 'Kohei Horikoshi',
     coverColor: Color(0xFF0891B2),

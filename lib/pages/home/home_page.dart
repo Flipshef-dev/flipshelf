@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   final List<Book> books = [
     Book(
-      id: "1",
+      id: 1,
       title: 'One Piece',
       author: 'Eiichiro Oda',
       coverColor: Color(0xFFB91C1C),
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults but is often read by adolescents for its theme of angst, alienation and as a critique......",
     ),
     Book(
-      id: "2",
+      id: 2,
       title: 'Attack on Titan',
       author: 'Hajime Isayama',
       coverColor: Color(0xFF059669),
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           "Attack on Titan is a Japanese manga series written and illustrated by Hajime Isayama. Set in a world where humanity lives inside cities surrounded by enormous walls...",
     ),
     Book(
-      id: "3",
+      id: 3,
       title: 'Naruto',
       author: 'Masashi Kishimoto',
       coverColor: Color(0xFFDC2626),
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   final List<Book> newArrivals = [
     Book(
-      id: "4",
+      id: 4,
       title: 'Story of Roronoa Zoro',
       author: 'Eiichiro Oda',
       coverColor: Color.fromARGB(255, 61, 220, 36),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           "The story follows Roronoa Zoro, a skilled swordsman who dreams of becoming the world's greatest swordsman...",
     ),
     Book(
-      id: "5",
+      id: 5,
       title: 'Demon Slayer',
       author: 'Koyoharu Gotouge',
       coverColor: Color.fromARGB(255, 147, 51, 234),
@@ -168,6 +168,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _searchController.clear();
     FocusScope.of(context).unfocus();
   }
+  void _toggleDrawer() {}
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +193,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
       ),
-      // Bottom bar
     );
   }
 
@@ -202,65 +202,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.menu,
-            size: 28,
+          IconButton(
+            onPressed: () {
+              _toggleDrawer();
+            },
+            icon: Icon(Icons.menu),
+            iconSize: 28,
             color: Theme.of(context).colorScheme.secondary,
           ),
           Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  themeProvider.toggleTheme();
-                  _updateToggleAnimation();
-                },
-                child: Container(
-                  width: 60,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.secondary,
-                      width: 1.2,
-                    ),
-                  ),
-                  child: AnimatedBuilder(
-                    animation: _toggleAnimation,
-                    builder: (context, child) {
-                      return Stack(
-                        children: [
-                          Positioned(
-                            left: _toggleAnimation.value * 30,
-                            top: 1,
-                            child: Container(
-                              width: 26,
-                              height: 26,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.secondary,
-                                borderRadius: BorderRadius.circular(13),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    blurRadius: 4,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Icon(
-                                themeProvider.isDarkMode
-                                    ? Icons.dark_mode
-                                    : Icons.light_mode,
-                                size: 16,
-                                color: Theme.of(context).colorScheme.surface,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
+              // Will be removed in future if not fix (oviously i'm too lazy to fix this rn)
+              // _buildThemeToggle(themeProvider, context),
               const SizedBox(width: 16),
               Hero(
                 tag: 'profile_avatar',
@@ -273,6 +226,64 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildThemeToggle(
+    ThemeProvider themeProvider,
+    BuildContext context,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        themeProvider.toggleTheme();
+        _updateToggleAnimation();
+      },
+      child: Container(
+        width: 60,
+        height: 30,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.secondary,
+            width: 1.2,
+          ),
+        ),
+        child: AnimatedBuilder(
+          animation: _toggleAnimation,
+          builder: (context, child) {
+            return Stack(
+              children: [
+                Positioned(
+                  left: _toggleAnimation.value * 30,
+                  top: 1,
+                  child: Container(
+                    width: 26,
+                    height: 26,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(13),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      themeProvider.isDarkMode
+                          ? Icons.dark_mode
+                          : Icons.light_mode,
+                      size: 16,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -484,7 +495,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           SizedBox(
             height: 290,
             child: ListView.builder(
@@ -518,5 +529,5 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
     );
   }
-
+  
 }

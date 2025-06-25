@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = ThemeData(
   brightness: Brightness.light,
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: const Color.fromARGB(255, 245, 255, 255),
   primaryColor: Colors.red[600],
   fontFamily: "Poppins",
   textTheme: GoogleFonts.poppinsTextTheme(),
@@ -14,13 +14,13 @@ final lightTheme = ThemeData(
     surface: Colors.white,
     onSurface: Colors.black87,
     tertiary: Colors.white,
-    tertiaryContainer: Color.fromARGB(255, 159, 159, 172),
+    tertiaryContainer: Color.fromARGB(255, 255, 255, 255),
   ),
 );
 
 final darkTheme = ThemeData(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: Color(0xFF232530),
+  scaffoldBackgroundColor: Color(0xFF262626),
   primaryColor: Colors.red[600],
   fontFamily: "Poppins",
   textTheme: GoogleFonts.poppinsTextTheme().apply(
@@ -31,9 +31,9 @@ final darkTheme = ThemeData(
     primary: Colors.red[600]!,
     secondary: Colors.white,
     onSecondary: Colors.black,
-    surface: Color(0xFF2A2A36),
+    surface: Color(0xFF404040),
     onSurface: Colors.white,
     tertiary: Colors.white,
-    tertiaryContainer: Color(0xFF2A2D3E),
+    tertiaryContainer: Color(0xFF404040),
   ),
 );

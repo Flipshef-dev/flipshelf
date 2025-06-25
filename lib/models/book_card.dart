@@ -77,7 +77,7 @@ class _BookCardState extends State<BookCard> {
             fontWeight: FontWeight.w600,
             color: Theme.of(context).colorScheme.secondary,
           ),
-          maxLines: 2,
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         SizedBox(height: 4),

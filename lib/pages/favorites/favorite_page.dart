@@ -1,8 +1,6 @@
 import 'package:flipshelf/common/temp_data.dart';
 import 'package:flipshelf/models/favorite_book_card.dart';
-import 'package:flipshelf/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -14,14 +12,13 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    final themeProvider = context.watch<ThemeProvider>();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
             // Topbar
-            _buildTopBar(context, themeProvider),
+            _buildTopBar(context),
             // Content
             recommended.isEmpty
                 ? Expanded(child: _buildNoFav(context))
@@ -53,7 +50,7 @@ class _FavoritePageState extends State<FavoritePage> {
     );
   }
 
-  Widget _buildTopBar(BuildContext context, ThemeProvider themeProvider) {
+  Widget _buildTopBar(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(

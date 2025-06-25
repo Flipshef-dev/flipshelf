@@ -160,7 +160,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           _buildRecommended(context),
-          const SliverToBoxAdapter(child: SizedBox(height: 20)),
+          const SliverToBoxAdapter(child: SizedBox(height: 80)),
         ],
       ),
     );
@@ -224,7 +224,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
           SizedBox(height: 12),
           SizedBox(
-            height: 260,
+            height: 300,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: BouncingScrollPhysics(),

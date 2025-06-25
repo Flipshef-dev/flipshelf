@@ -42,10 +42,9 @@ class _MainPageState extends State<MainPage> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withAlpha(100),
-              spreadRadius: 0,
-              blurRadius: 20,
-              offset: const Offset(0, -5),
+              color: Colors.black,
+              blurRadius: 12,
+              offset: Offset(0, 4),
             ),
           ],
         ),

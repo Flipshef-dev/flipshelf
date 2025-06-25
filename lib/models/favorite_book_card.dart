@@ -30,7 +30,7 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.only(top: 8),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.tertiaryContainer,
         borderRadius: BorderRadius.circular(16),
@@ -88,8 +88,8 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
                       children: [
                         Text(
                           widget.book.title,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
@@ -100,7 +100,7 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
                         Text(
                           'By ${widget.book.author}',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.7),
+                            color: Theme.of(context).colorScheme.secondary.withAlpha(200),
                             fontSize: 14,
                           ),
                           maxLines: 1,
@@ -120,26 +120,25 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
                       children: [
                         Text(
                           "\$${widget.book.price}",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                         GestureDetector(
                           onTap: _toggleFavorite,
                           child: Container(
-                            padding: const EdgeInsets.all(12),
+                            padding: EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: _isFavorite 
-                                  ? Colors.white.withOpacity(0.2)
-                                  : const Color(0xFF404459), // Darker gray for unfavorited
+                              color: Color(0xFF404459),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Icon(
-                              _isFavorite
-                                  ? FontAwesomeIcons.solidHeart
-                                  : FontAwesomeIcons.heart,
+                            child: Icon(FontAwesomeIcons.solidHeart,
+
+                              // _isFavorite
+                              //     ? FontAwesomeIcons.solidHeart
+                              //     : FontAwesomeIcons.heart,
                               color: Colors.white,
                               size: 18,
                             ),

@@ -116,7 +116,9 @@ class _BookPageState extends State<BookPage> {
       textAlign: TextAlign.justify,
       style: TextStyle(
         color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-        fontSize: 16, height: 1.5),
+        fontSize: 16,
+        height: 1.5,
+      ),
     );
   }
 
@@ -231,16 +233,17 @@ class _BookPageState extends State<BookPage> {
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           color: Theme.of(context).colorScheme.onSurface,
-
                         ),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        book!.author,
+                        "by ${book!.author}",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                       const SizedBox(height: 12),

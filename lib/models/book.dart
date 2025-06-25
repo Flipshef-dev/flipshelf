@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 class Book {
-  final String id;
+  final int id;
   final String title;
   final String author;
   final Color coverColor;
@@ -79,7 +79,7 @@ class Book {
 
   // Copy with method for updating book properties
   Book copyWith({
-    String? id,
+    int? id,
     String? title,
     String? author,
     Color? coverColor,
