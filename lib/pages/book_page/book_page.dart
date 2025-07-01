@@ -1,5 +1,11 @@
+import 'dart:ui';
+
 import 'package:flipshelf/models/book.dart';
+import 'package:flipshelf/services/favorite_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:provider/provider.dart';
 
 class BookPage extends StatefulWidget {
   const BookPage({super.key});
@@ -11,8 +17,6 @@ class BookPage extends StatefulWidget {
 class _BookPageState extends State<BookPage> {
   Book? book;
   bool isLoading = true;
-  bool isBookmarked = false;
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -33,21 +37,6 @@ class _BookPageState extends State<BookPage> {
     }
   }
 
-  void _toggleBookmark() {
-    setState(() {
-      isBookmarked = !isBookmarked;
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        margin: EdgeInsets.all(2),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          isBookmarked ? 'Added to bookmarks' : 'Removed from bookmarks',
-        ),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
 
   void _onReadNowPressed() {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -124,6 +113,9 @@ class _BookPageState extends State<BookPage> {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+    final isFavorite = favoriteProvider.isFavorite(book!);
+
     if (isLoading) {
       return const Scaffold(
         backgroundColor: Colors.white,
@@ -169,9 +161,11 @@ class _BookPageState extends State<BookPage> {
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                   IconButton(
-                    onPressed: _toggleBookmark,
+                    onPressed: () =>  toggleFavorite(isFavorite, favoriteProvider),
                     icon: Icon(
-                      isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                      isFavorite
+                          ? FontAwesomeIcons.solidHeart
+                          : FontAwesomeIcons.heart,
                     ),
                     color: Theme.of(context).colorScheme.primary,
                   ),
@@ -325,6 +319,20 @@ class _BookPageState extends State<BookPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void toggleFavorite(bool isFavorite, FavoriteProvider favoriteProvider) {
+    favoriteProvider.toggleFavorite(book!);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        margin: EdgeInsets.all(2),
+        behavior: SnackBarBehavior.floating,
+        content: Text(
+          isFavorite ? 'Removed from favorites' : 'Added to favorites',
+        ),
+        duration: const Duration(seconds: 2),
       ),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flipshelf/models/book.dart';
 import 'package:flipshelf/models/build_star.dart';
+import 'package:flipshelf/services/favorite_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class FavoriteBookCard extends StatefulWidget {
   final Book book;
@@ -12,22 +14,11 @@ class FavoriteBookCard extends StatefulWidget {
 }
 
 class _FavoriteBookCardState extends State<FavoriteBookCard> {
-  bool _isFavorite = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _isFavorite = widget.book.isFavorite;
-  }
-
-  void _toggleFavorite() {
-    setState(() {
-      _isFavorite = !_isFavorite;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+    final isFavorite = favoriteProvider.isFavorite(widget.book);
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(top: 8),
@@ -48,7 +39,7 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
             // Book cover
             Container(
               height: 160,
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),
                   bottomLeft: Radius.circular(16),
@@ -100,7 +91,9 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
                         Text(
                           'By ${widget.book.author}',
                           style: TextStyle(
-                            color: Theme.of(context).colorScheme.secondary.withAlpha(200),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.secondary.withAlpha(200),
                             fontSize: 14,
                           ),
                           maxLines: 1,
@@ -127,21 +120,20 @@ class _FavoriteBookCardState extends State<FavoriteBookCard> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: _toggleFavorite,
+                          onTap: () => favoriteProvider.toggleFavorite(widget.book),
                           child: Container(
                             padding: EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: Color(0xFF404459),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Icon(FontAwesomeIcons.solidHeart,
-
-                              // _isFavorite
-                              //     ? FontAwesomeIcons.solidHeart
-                              //     : FontAwesomeIcons.heart,
+                            child: Icon(
+                              isFavorite
+                              ? FontAwesomeIcons.solidHeart
+                              : FontAwesomeIcons.heart,
                               color: Colors.white,
                               size: 18,
-                            ),
+                              ),
                           ),
                         ),
                       ],

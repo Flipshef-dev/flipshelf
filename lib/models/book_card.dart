@@ -1,6 +1,8 @@
 import 'package:flipshelf/models/book.dart';
+import 'package:flipshelf/services/favorite_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BookCard extends StatefulWidget {
   final Book book;
@@ -11,10 +13,12 @@ class BookCard extends StatefulWidget {
 }
 
 class _BookCardState extends State<BookCard> {
-  bool isLoved = false;
+
 
   @override
   Widget build(BuildContext context) {
+  final favoriteProvider = Provider.of<FavoriteProvider>(context);
+  final isFavorite = favoriteProvider.isFavorite(widget.book);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,13 +57,11 @@ class _BookCardState extends State<BookCard> {
                     overlayColor: Colors.transparent,
                   ),
                   iconSize: 22,
-                  onPressed: () {
-                    setState(() {
-                      isLoved = !isLoved;
-                    });
+                  onPressed: () => {
+                    favoriteProvider.toggleFavorite(widget.book)
                   },
                   icon: Icon(
-                    isLoved
+                    isFavorite
                         ? FontAwesomeIcons.solidHeart
                         : FontAwesomeIcons.heart,
                   ),

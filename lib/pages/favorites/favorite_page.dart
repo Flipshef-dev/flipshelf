@@ -1,6 +1,8 @@
-import 'package:flipshelf/common/temp_data.dart';
+import 'package:flipshelf/models/book.dart';
 import 'package:flipshelf/models/favorite_book_card.dart';
+import 'package:flipshelf/services/favorite_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -12,24 +14,23 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
+    final favoriteBooks = context.watch<FavoriteProvider>().favorites;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            // Topbar
             _buildTopBar(context),
-            // Content
-            recommended.isEmpty
+            favoriteBooks.isEmpty
                 ? Expanded(child: _buildNoFav(context))
-                : _buildContent(context),
+                : _buildContent(context, favoriteBooks),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, List<Book> favoriteBooks) {
     return Expanded(
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
@@ -40,9 +41,9 @@ class _FavoritePageState extends State<FavoritePage> {
               delegate: SliverChildBuilderDelegate((context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: FavoriteBookCard(book: recommended[index]),
+                  child: FavoriteBookCard(book: favoriteBooks[index]),
                 );
-              }, childCount: recommended.length),
+              }, childCount: favoriteBooks.length),
             ),
           ),
         ],

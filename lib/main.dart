@@ -4,6 +4,7 @@ import 'package:flipshelf/pages/login/login_page.dart';
 import 'package:flipshelf/pages/read_book/book_reader.dart';
 import 'package:flipshelf/pages/signup/signup_page.dart';
 import 'package:flipshelf/pages/welcome/welcome_page.dart';
+import 'package:flipshelf/services/favorite_provider.dart';
 import 'package:flipshelf/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +12,11 @@ import 'package:flipshelf/theme/theme_provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -30,7 +34,9 @@ class MyApp extends StatelessWidget {
           title: 'Flipshelf',
           theme: lightTheme,
           darkTheme: darkTheme,
-          themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+          themeMode: themeProvider.isDarkMode
+              ? ThemeMode.dark
+              : ThemeMode.light,
           home: WelcomePage(),
 
           routes: {

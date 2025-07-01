@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flipshelf/models/bottom_navbar_items.dart';
 import 'package:flipshelf/pages/home/home_page.dart';
 import 'package:flipshelf/pages/search/search_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -63,7 +62,7 @@ class _MainPageState extends State<MainPage> {
               _onNavTap(index);
             },
             iconSize: 22,
-            duration: Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 400),
             tabs: [
               GButton(
                 icon: LucideIcons.home,
