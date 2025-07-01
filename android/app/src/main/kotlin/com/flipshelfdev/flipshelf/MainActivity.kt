@@ -1,4 +1,4 @@
-package com.example.flipshelf
+package com.flipshelfdev.flipshelf
 
 import io.flutter.embedding.android.FlutterActivity
 
