@@ -3,7 +3,6 @@ import 'package:flipshelf/models/book.dart';
 import 'package:flipshelf/models/book_card.dart';
 import 'package:flipshelf/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flipshelf/models/sidebar.dart';
 
