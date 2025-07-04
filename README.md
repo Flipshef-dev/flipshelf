@@ -7,13 +7,13 @@ A new Flutter project.
 This project is a part of my OJT(On-the-Job Training).
 
 ### TODO
-[x] Add Search page
+- [x] Add Search page
 
-[x] Add Favorite page
+- [x] Add Favorite page
 
-[x] Add Settings  
+- [x] Add Settings  
 
-[ ] Add books from api
+- [ ] Add books from api
 
 ## Screenshot
 <p align="start" >
