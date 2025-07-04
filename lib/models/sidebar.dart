@@ -14,7 +14,7 @@ class Sidebar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 8),
+            SizedBox(height: 28),
             buildTopBar(context),
             SizedBox(height: 20),
             buildNavs(context),

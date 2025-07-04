@@ -1,6 +1,6 @@
 name: flipshelf
 description: "A Book store app"
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -25,6 +25,27 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: "^0.14.4"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icons/app_icon.png"
+  ios: true
+  linux:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
+  web:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: "assets/icons/app_icon.png"
 
 flutter:
   uses-material-design: true
@@ -33,7 +54,6 @@ flutter:
     - assets/images/
     - assets/icons/
   #   - images/a_dot_ham.jpeg
-
 
   # fonts:
   #   - family: Schyler
